@@ -1,0 +1,13 @@
+create schema hibernateonetomany
+
+create table course_instructor_detail (id int not null auto_increment primary key, youtube_channel varchar(40) default null, hobby varchar(20) default null);  
+
+create table course_instructor (id int not null auto_increment primary key, first_name varchar(20), email varchar(20), instructor_id int default null,constraint crfk_key foreign key (instructor_id) references course_instructor_detail(id) ON delete no action ON update no action);
+
+create table course(id int not null auto_increment primary key,title varchar(20), course_instructor_id int default null, constraint cr_key foreign key (course_instructor_id) references course_instructor(id) ON delete no action ON update no action);
+
+select * from course;
+
+select * from Course_instructor;
+
+select * from Course_instructor_detail;
