@@ -1,0 +1,31 @@
+//SQL queries used for this project. 
+//Note this only works in mysql for orcale auto_increment is not there we need to create a sequence and assign seperately
+
+
+create schema hibernateonetoone
+
+create table instructor_detail (id int not null primary key, youtube_channel varchar(40) default null, hobby varchar(20) default null);  
+
+create table instructor (id int not null primary key, first_name varchar(20), email varchar(20), instructor_id int default null,constraint crfk_key foreign key (instructor_id) references instructor_detail(id));
+
+select * from course;
+
+select * from Course_instructor;
+
+select * from Course_instructor_detail;
+
+
+//Oracle steps for creating auto_increment like in MYSQL
+
+Syntax:
+create sequence sequence_name start with 1 increment by 1;
+
+
+Example:
+
+create sequence hib_onetoone start with 100 increment by 1;
+
+
+Insert Example
+insert into instructor_detail values(hib_onetoone.nextVal, 'MKBHD', 'coding');
+
